@@ -7,19 +7,12 @@ addResolution(event) {
     event.preventDefault();
    
     var text = this.refs.resolution.value.trim();
-     console.log(text);
+     
     
-
-    Resolutions.insert({
-      text: text,
-      complete: false,
-      createdAt: new Date()
-    });
-
-    // reset string
-    this.refs.resolution.value = "";
+ Meteor.call('addResolution', text, ()=>{ 
+  this.refs.resolution.value = "";
+});  
   }
-
 
     render() {
          return (
